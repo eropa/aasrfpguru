@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('upanel.main');
+
+Route::middleware(['IsAdmin'])->group(function () {
+    Route::get('/', function () {
+        return view('upanel.main');
+    });
+
 });
 
 Auth::routes();
