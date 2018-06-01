@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Описание сайта</h5>
                     <p class="card-text">Проэкт создан для ю.....</p>
-                    <a href="https://github.com/eropa/aasrfpgu_ru" class="btn btn-primary">Go github</a>
+                    <a href="https://github.com/eropa/aasrfpguru" class="btn btn-primary">Go github</a>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/', function () {
         return view('upanel.main');
     });
-
+    Route::get('/usp/treatslist','TreatsController@index');
 });
 
 Auth::routes();

@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Главная</a>
+                <a class="nav-link" href="{{url('/')}}">Главная</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -30,7 +30,7 @@
                     Справочник БД
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Угрозы БД</a>
+                    <a class="dropdown-item" href="{{ url('/usp/treatslist') }}">Угрозы БД</a>
                     <a class="dropdown-item" href="#">Барьеры БД</a>
                     <a class="dropdown-item" href="#">Защищаемые данные БД</a>
                 </div>
