@@ -13,18 +13,26 @@
 
 
 Route::middleware(['IsAdmin'])->group(function () {
-    Route::get('/', function () {
-        return view('upanel.main');
-    });
+    // Главная страница
+    Route::get('/', function () {return view('upanel.main');});
+    // Спиоск всех угроз
     Route::get('/usp/treatslist','TreatsController@index');
+    // Спиоско все источников угроз
+    Route::get('/usp/treatsistochniklist','TreatsController@indexIstochnik');
+    // Управление источников угроз
+    Route::get('/usp/treatsistochniklist/manager/{id?}','TreatsController@manIstochnik',
+        function($id=0){});
+    // Добовляем или изменяем данные
+    Route::post('/usp/treatsistochniklist/manager/{id?}','TreatsController@SaveUpdateIstochnik',
+        function($id=0){})->name('manageristochnik_add_save');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
