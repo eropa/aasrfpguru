@@ -1,6 +1,9 @@
 @extends('upanel.app')
 
-@section('content')
+@section('headURL')
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Главная</li>
+    </ol>
 @endsection
 
 @section('content')

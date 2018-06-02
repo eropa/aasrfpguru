@@ -18,6 +18,7 @@ class CreateMyTreatsTable extends Migration
             $table->string('NameTreats')->unique();
             $table->string('TypeIstochnik');
             $table->string('Posledctvies');
+            $table->integer('userCreate');
             $table->timestamps();
         });
     }

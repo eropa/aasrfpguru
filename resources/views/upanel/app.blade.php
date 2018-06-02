@@ -31,6 +31,8 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ url('/usp/treatslist') }}">Угрозы БД</a>
+                    <a class="dropdown-item" href="#">Источник угроз</a>
+                    <a class="dropdown-item" href="#">Последствие от реализации угроз</a>
                     <a class="dropdown-item" href="#">Барьеры БД</a>
                     <a class="dropdown-item" href="#">Защищаемые данные БД</a>
                 </div>
@@ -82,9 +84,7 @@
 
 <nav aria-label="breadcrumb">
     @yield('headURL')
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Главная</li>
-    </ol>
+
 </nav>
 
 <div class="container-fluid">
