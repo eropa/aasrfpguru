@@ -15,6 +15,7 @@ class CreateMyTreatsPosledctviesTable extends Migration
     {
         Schema::create('my_treats_posledctvies', function (Blueprint $table) {
             $table->increments('id');
+            $table->string("NamePosledctvie")->unique();
             $table->timestamps();
         });
     }

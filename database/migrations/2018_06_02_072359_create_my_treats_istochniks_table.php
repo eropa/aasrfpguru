@@ -15,6 +15,7 @@ class CreateMyTreatsIstochniksTable extends Migration
     {
         Schema::create('my_treats_istochniks', function (Blueprint $table) {
             $table->increments('id');
+            $table->string("NameIstocjnik")->unique();
             $table->timestamps();
         });
     }

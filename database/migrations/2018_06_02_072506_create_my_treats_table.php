@@ -15,6 +15,9 @@ class CreateMyTreatsTable extends Migration
     {
         Schema::create('my_treats', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('NameTreats')->unique();
+            $table->string('TypeIstochnik');
+            $table->string('Posledctvies');
             $table->timestamps();
         });
     }
