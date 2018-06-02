@@ -81,6 +81,7 @@
 </nav>
 
 <nav aria-label="breadcrumb">
+    @yield('headURL')
     <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page">Главная</li>
     </ol>

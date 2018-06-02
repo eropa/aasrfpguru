@@ -17,9 +17,23 @@
                         </div>
                         <div class="form-group">
                             <label>Источники угрозы:</label>
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect"
+                                name="istochnuk">
+                                <option selected  value="0">......</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Последствия реализации угрозы:</label>
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect"
+                                    name="posledstvie">
+                                <option selected  value="0">......</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
                         </div>
 
                     </form>
@@ -33,10 +47,10 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
+                            <th>id</th>
+                            <th>Название</th>
+                            <th>Дата записи</th>
+                            <th>Автор</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,13 +58,7 @@
                             <th scope="row">1</th>
                             <td>Mark</td>
                             <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            <td>Otto</td>
                         </tr>
                         </tbody>
                     </table>
