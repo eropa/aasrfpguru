@@ -41,14 +41,20 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td><a class="btn btn-info" href="#" role="button">Link</a>
-                                /
-                                <a class="btn btn-danger" href="#" role="button">Удалить</a>
+                        @foreach($datas as $data)
+                            <tr>
+                                <th scope="row">{{$data->id}}</th>
+                                <td>{{$data->NameIstocjnik}}</td>
+                                <td><a class="btn btn-info"
+                                       href="{{ url('/usp/treatsistochniklist/manager/'.$data->id)  }}"
+                                       role="button">Изменить</a>
+                                    /
+                                    <a class="btn btn-danger"
+                                       href="{{ url('/usp/treatsistochniklist/delete/'.$data->id)  }}"
+                                       role="button">Удалить</a>
                                 </td>
-                        </tr>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

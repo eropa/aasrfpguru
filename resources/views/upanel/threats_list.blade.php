@@ -27,9 +27,9 @@
                             <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect"
                                 name="istochnuk">
                                 <option selected  value="0">......</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                @foreach($dataIstochniks as $dataIstochnik)
+                                    <option value="{{$dataIstochnik->id}}">{{ $dataIstochnik->NameIstocjnik }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

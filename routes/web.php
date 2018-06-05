@@ -25,11 +25,14 @@ Route::middleware(['IsAdmin'])->group(function () {
     // Добовляем или изменяем данные
     Route::post('/usp/treatsistochniklist/manager/{id?}','TreatsController@SaveUpdateIstochnik',
         function($id=0){})->name('manageristochnik_add_save');
+    //Удоляем данные ( источники)
+    Route::get('/usp/treatsistochniklist/delete/{id?}','TreatsController@deleteIstochnik',
+        function($id=0){});
 });
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
