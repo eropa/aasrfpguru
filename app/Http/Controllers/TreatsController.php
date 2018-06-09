@@ -69,6 +69,33 @@ class TreatsController extends Controller
             return view('upanel.threats_posledctvies_manager',['id'=>$id,'datas'=>$datas]);
         }
     }
+    // Управление источников угроз
+    public function manTreats($id){
+
+        //Модель для получения источника
+        $myIstochnik=new myTreatsIstochnik();
+        //список источников
+        $dataIstochniks=$myIstochnik->SelectAllRecord();
+
+        //Модель для получения последствия
+        $myPoscledctvie=new myTreatsPosledctvie();
+        //Список
+        $dataPosledctvies=$myPoscledctvie->SelectAllRecord();
+
+        // открываем вьюшку на упрвление
+        if($id==0){
+            return view('upanel.threats_manager',['id'=>$id,
+                    'dataIstochniks'    =>  $dataIstochniks,
+                    'dataPosledctvies'  =>  $dataPosledctvies
+                    ]);
+        }else{
+            $datas=$myModel->SelectId($id);
+            return view('upanel.threats_manager',['id'=>$id,
+                'dataIstochniks'    =>  $dataIstochniks,
+                'dataPosledctvies'  =>  $dataPosledctvies
+            ]);
+        }
+    }
     /**
      * @param $id номер записи
      * Удоляем данные

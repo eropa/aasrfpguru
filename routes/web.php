@@ -17,6 +17,9 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/', function () {return view('upanel.main');});
     // Спиоск всех угроз
     Route::get('/usp/treatslist','TreatsController@index');
+    // Управление источников угроз
+    Route::get('/usp/treatslist/manager/{id?}','TreatsController@manTreats',
+        function($id=0){});
     // Спиоско все источников угроз
     Route::get('/usp/treatsistochniklist','TreatsController@indexIstochnik');
     // Управление источников угроз
@@ -34,7 +37,6 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/usp/treatsposledctvies/manager/{id?}','TreatsController@manPosledctvie',
         function($id=0){});
     // Добовляем или изменяем данные в таблице последствии угроз
-
     Route::post('/usp/treatsposledctvies/manager/{id?}','TreatsController@SaveUpdatePosledctvie',
         function($id=0){})->name('managerposledctvies_add_save');
     //Удоляем данные ( источники)

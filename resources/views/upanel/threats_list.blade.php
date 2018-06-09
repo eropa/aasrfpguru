@@ -52,6 +52,8 @@
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-body">
+                    <a class="btn btn-success" href="{{ url('/usp/treatslist/manager/0') }}"
+                       role="button">Добавить запись</a>
                     <h5 class="card-title">Список угроз</h5>
                     <table class="table table-hover">
                         <thead>
