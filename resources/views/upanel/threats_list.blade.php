@@ -60,16 +60,25 @@
                         <tr>
                             <th>id</th>
                             <th>Название</th>
-                            <th>Дата записи</th>
                             <th>Автор</th>
+                            <th>Действие</th>
                         </tr>
                         </thead>
                         <tbody>
+
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
+                            @foreach($dataTreats as $dataTreat)
+                                <th scope="row">{{ $dataTreat->id }}</th>
+                                <td>{{ $dataTreat->NameTreats }}</td>
+                                <td>{{ $dataTreat->userCreate }}</td>
+                                <td><a class="btn btn-info"
+                                       href="{{ url('#'.$dataTreat->id)  }}"
+                                       role="button">Изменить</a>
+                                    /
+                                    <a class="btn btn-danger"
+                                       href="{{ url('#'.$dataTreat->id)  }}"
+                                       role="button">Удалить</a></td>
+                            @endforeach
                         </tr>
                         </tbody>
                     </table>

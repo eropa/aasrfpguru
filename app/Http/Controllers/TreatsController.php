@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\myTreats;
 use App\myTreatsIstochnik;
 use App\myTreatsPosledctvie;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth; // <-- add this
 
 class TreatsController extends Controller
 {
@@ -20,10 +23,16 @@ class TreatsController extends Controller
         //Список
         $dataPosledctvies=$myPoscledctvie->SelectAllRecord();
 
+        //Модуль угроз
+        $myTreats =new myTreats();
+        //Список
+        $dataTreats=$myTreats->SelectAllRecord();
+
         //испок все угроз в базе
         return view('upanel.threats_list',[
             'dataIstochniks'    =>  $dataIstochniks,
-            'dataPosledctvies'  =>  $dataPosledctvies
+            'dataPosledctvies'  =>  $dataPosledctvies,
+            'dataTreats'        =>  $dataTreats
         ]);
     }
     // Список источников
@@ -69,7 +78,7 @@ class TreatsController extends Controller
             return view('upanel.threats_posledctvies_manager',['id'=>$id,'datas'=>$datas]);
         }
     }
-    // Управление источников угроз
+    // Управление угроз
     public function manTreats($id){
 
         //Модель для получения источника
@@ -96,6 +105,7 @@ class TreatsController extends Controller
             ]);
         }
     }
+
     /**
      * @param $id номер записи
      * Удоляем данные
@@ -146,5 +156,25 @@ class TreatsController extends Controller
         }
         // переходим на список всех групп
         return redirect('usp/treatsposledctvies');
+    }
+
+    //Создаем или сохроняем данные (УГРОЗЫ)
+    public function SaveUpdateTreats(Request $request){
+        // dump($request);
+        // Экзепляр класса модели ИСТОЧНИК УГРОЗ
+        $myModel=new myTreats();
+        $idUser=Auth::user()->id;
+        // выполняем данные
+        if($request->input('_idRecord')==0){
+            $myModel->AddRecord($request,$idUser);
+        }
+        /*
+        else{
+            //$myModel->UpdateDateId($request->input('_idRecord'),$request->input('sName'));
+        }
+        */
+        // переходим на список всех групп
+        return redirect('usp/treatslist');
+
     }
 }

@@ -20,6 +20,8 @@ Route::middleware(['IsAdmin'])->group(function () {
     // Управление источников угроз
     Route::get('/usp/treatslist/manager/{id?}','TreatsController@manTreats',
         function($id=0){});
+    Route::post('/usp/treatslist/manager/{id?}','TreatsController@SaveUpdateTreats',
+        function($id=0){})->name('managertreats_add_save');;
     // Спиоско все источников угроз
     Route::get('/usp/treatsistochniklist','TreatsController@indexIstochnik');
     // Управление источников угроз

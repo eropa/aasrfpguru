@@ -17,7 +17,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" href="#">
+                    <form method="post" href="{{ route('managertreats_add_save') }}">
                         @if ($id > 0)
                             <div class="form-group row">
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
@@ -33,18 +33,19 @@
                                 <label for="inputEmail3" class="col-sm-2 form-control-label">Название</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="inputEmail3"
-                                           placeholder="Название угрозы">
+                                           placeholder="Название угрозы" name="sName">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 form-control-label">Описание</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleTextarea" rows="3"
+                                    name="AboutTreats"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 form-control-label">Источники угрозы</label>
-                                <select multiple class="form-control" id="exampleSelect2">
+                                <select multiple class="form-control" id="exampleSelect2" name="mIstochnik[]">
                                     @foreach($dataIstochniks as $dataIstochnik)
                                         <option value="{{$dataIstochnik->id}}">{{ $dataIstochnik->NameIstocjnik }}</option>
                                     @endforeach
@@ -53,7 +54,7 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 form-control-label">
                                     Последствия реализации угрозы</label>
-                                <select multiple class="form-control" id="exampleSelect2">
+                                <select multiple class="form-control" id="exampleSelect2" name="mPosledctive[]">
                                     @foreach($dataPosledctvies as $dataPosledctvie)
                                         <option value="{{$dataPosledctvie->id}}">
                                             {{ $dataPosledctvie->NamePosledctvie }}
