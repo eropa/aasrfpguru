@@ -20,6 +20,7 @@ Route::middleware(['IsAdmin'])->group(function () {
     // Управление источников угроз
     Route::get('/usp/treatslist/manager/{id?}','TreatsController@manTreats',
         function($id=0){});
+    // Удаление угрозы из БД
     Route::post('/usp/treatslist/manager/{id?}','TreatsController@SaveUpdateTreats',
         function($id=0){})->name('managertreats_add_save');;
     // Спиоско все источников угроз
@@ -43,6 +44,9 @@ Route::middleware(['IsAdmin'])->group(function () {
         function($id=0){})->name('managerposledctvies_add_save');
     //Удоляем данные ( источники)
     Route::get('/usp/treatsposledctvies/delete/{id?}','TreatsController@deletePosledctvie',
+        function($id=0){});
+    //Удоляем данные ( источники)
+    Route::get('/usp/treatslist/delete/{id?}','TreatsController@deleteTreats',
         function($id=0){});
 });
 

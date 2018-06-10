@@ -91,6 +91,8 @@ class TreatsController extends Controller
         //Список
         $dataPosledctvies=$myPoscledctvie->SelectAllRecord();
 
+
+
         // открываем вьюшку на упрвление
         if($id==0){
             return view('upanel.threats_manager',['id'=>$id,
@@ -98,11 +100,20 @@ class TreatsController extends Controller
                     'dataPosledctvies'  =>  $dataPosledctvies
                     ]);
         }else{
+            $myModel=new myTreats();
             $datas=$myModel->SelectId($id);
+            $SelectIsctochnik = explode("#", $datas->TypeIstochnik);
+            $SelectPosledctvie = explode("#", $datas->Posledctvies);
+            //dump($SelectPosledctvie);
+
             return view('upanel.threats_manager',['id'=>$id,
                 'dataIstochniks'    =>  $dataIstochniks,
-                'dataPosledctvies'  =>  $dataPosledctvies
+                'dataPosledctvies'  =>  $dataPosledctvies,
+                'datas'             =>  $datas,
+                'SelectIsctochnik'  =>  $SelectIsctochnik,
+                'SelectPosledctvie' =>  $SelectPosledctvie
             ]);
+
         }
     }
 
@@ -118,6 +129,20 @@ class TreatsController extends Controller
         // переходим на список всех групп
         return redirect('usp/treatsistochniklist');
     }
+
+    /**
+     * @param $id номер записи
+     * Удоляем данные
+     */
+    public function deleteTreats($id){
+        // Экзепляр класса модели ИСТОЧНИК УГРОЗ
+        $myModel=new myTreats();
+        //удоляем по номеру ID
+        $myModel->DeleteRecord($id);
+        // переходим на список всех групп
+        return redirect('usp/treatslist');
+    }
+
     /**
      * @param $id номер записи
      * Удоляем данные
@@ -160,19 +185,18 @@ class TreatsController extends Controller
 
     //Создаем или сохроняем данные (УГРОЗЫ)
     public function SaveUpdateTreats(Request $request){
-        // dump($request);
         // Экзепляр класса модели ИСТОЧНИК УГРОЗ
         $myModel=new myTreats();
         $idUser=Auth::user()->id;
         // выполняем данные
         if($request->input('_idRecord')==0){
+            //добовляем данные
             $myModel->AddRecord($request,$idUser);
         }
-        /*
         else{
-            //$myModel->UpdateDateId($request->input('_idRecord'),$request->input('sName'));
+            //обновляем данные
+            $myModel->UpdateDateId($request->input('_idRecord'),$request);
         }
-        */
         // переходим на список всех групп
         return redirect('usp/treatslist');
 

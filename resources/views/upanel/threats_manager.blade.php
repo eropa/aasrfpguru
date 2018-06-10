@@ -33,33 +33,57 @@
                                 <label for="inputEmail3" class="col-sm-2 form-control-label">Название</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="inputEmail3"
-                                           placeholder="Название угрозы" name="sName">
+                                           placeholder="Название угрозы" name="sName"
+                                    @if ($id > 0) value="{{ $datas->NameTreats }}" @endif >
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 form-control-label">Описание</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="exampleTextarea" rows="3"
-                                    name="AboutTreats"></textarea>
+                                    <textarea class="form-control" id="exampleTextarea" rows="5"
+                                    name="AboutTreats">@if ($id > 0){{ $datas->AboutText }}@endif</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 form-control-label">Источники угрозы</label>
                                 <select multiple class="form-control" id="exampleSelect2" name="mIstochnik[]">
-                                    @foreach($dataIstochniks as $dataIstochnik)
-                                        <option value="{{$dataIstochnik->id}}">{{ $dataIstochnik->NameIstocjnik }}</option>
-                                    @endforeach
+                                    @if ($id > 0)
+                                        @foreach($dataIstochniks as $dataIstochnik)
+                                            <option value="{{$dataIstochnik->id}}"
+                                                @if(in_array($dataIstochnik->id,$SelectIsctochnik))
+                                                    selected
+                                                @endif
+
+                                            >{{ $dataIstochnik->NameIstocjnik }}</option>
+                                        @endforeach
+                                    @else
+                                        @foreach($dataIstochniks as $dataIstochnik)
+                                            <option value="{{$dataIstochnik->id}}">{{ $dataIstochnik->NameIstocjnik }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 form-control-label">
                                     Последствия реализации угрозы</label>
                                 <select multiple class="form-control" id="exampleSelect2" name="mPosledctive[]">
-                                    @foreach($dataPosledctvies as $dataPosledctvie)
-                                        <option value="{{$dataPosledctvie->id}}">
-                                            {{ $dataPosledctvie->NamePosledctvie }}
-                                        </option>
-                                    @endforeach
+                                    @if ($id > 0)
+                                        @foreach($dataPosledctvies as $dataPosledctvie)
+                                            <option value="{{$dataPosledctvie->id}}"
+                                                @if(in_array($dataPosledctvie->id,$SelectPosledctvie))
+                                                    selected
+                                                @endif
+                                            >
+                                                {{ $dataPosledctvie->NamePosledctvie }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        @foreach($dataPosledctvies as $dataPosledctvie)
+                                            <option value="{{$dataPosledctvie->id}}">
+                                                {{ $dataPosledctvie->NamePosledctvie }}
+                                            </option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
 

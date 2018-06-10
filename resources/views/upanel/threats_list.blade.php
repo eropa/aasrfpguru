@@ -58,28 +58,26 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>id</th>
                             <th>Название</th>
-                            <th>Автор</th>
                             <th>Действие</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        <tr>
+
                             @foreach($dataTreats as $dataTreat)
-                                <th scope="row">{{ $dataTreat->id }}</th>
+                                <tr>
                                 <td>{{ $dataTreat->NameTreats }}</td>
-                                <td>{{ $dataTreat->userCreate }}</td>
                                 <td><a class="btn btn-info"
-                                       href="{{ url('#'.$dataTreat->id)  }}"
+                                       href="{{ url('/usp/treatslist/manager/'.$dataTreat->id)  }}"
                                        role="button">Изменить</a>
                                     /
                                     <a class="btn btn-danger"
-                                       href="{{ url('#'.$dataTreat->id)  }}"
+                                       href="{{ url('/usp/treatslist/delete/'.$dataTreat->id)  }}"
                                        role="button">Удалить</a></td>
+                                </tr>
                             @endforeach
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
