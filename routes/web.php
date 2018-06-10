@@ -48,6 +48,20 @@ Route::middleware(['IsAdmin'])->group(function () {
     //Удоляем данные ( источники)
     Route::get('/usp/treatslist/delete/{id?}','TreatsController@deleteTreats',
         function($id=0){});
+
+
+    // Спиоск всех угроз
+    Route::get('/usp/scuriteblist','SecuritybController@IndexAll');
+    // Управление барьеров защиты
+    Route::get('/usp/scuriteblist/manager/{id?}','SecuritybController@manForm',
+        function($id=0){});
+    // Добовление или изменение угрозы из БД
+    Route::post('/usp/scuriteblist/manager/{id?}','SecuritybController@SaveUpdateSecuriteb',
+        function($id=0){})->name('managersecuriteb_add_save');
+    //Удоляем данные ( источники)
+    Route::get('/usp/scuriteblist/delete/{id?}','SecuritybController@deleteRecord',
+        function($id=0){});
+
 });
 
 Auth::routes();

@@ -33,7 +33,7 @@
                     <a class="dropdown-item" href="{{ url('/usp/treatslist') }}">Угрозы БД</a>
                     <a class="dropdown-item" href="{{ url('/usp/treatsistochniklist') }}">Источник угроз</a>
                     <a class="dropdown-item" href="{{ url('/usp/treatsposledctvies') }}">Последствие от реализации угроз</a>
-                    <a class="dropdown-item" href="#">Барьеры БД</a>
+                    <a class="dropdown-item" href="{{ url('/usp/scuriteblist') }}">Барьеры БД</a>
                     <a class="dropdown-item" href="#">Защищаемые данные БД</a>
                 </div>
             </li>
@@ -47,10 +47,6 @@
                     <a class="dropdown-item" href="#">Список</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Инфо. для пользователя</a>
-            </li>
-
         </ul>
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
