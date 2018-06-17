@@ -33,6 +33,7 @@
                     <a class="dropdown-item" href="{{ url('/usp/treatslist') }}">Угрозы БД</a>
                     <a class="dropdown-item" href="{{ url('/usp/treatsistochniklist') }}">Источник угроз</a>
                     <a class="dropdown-item" href="{{ url('/usp/treatsposledctvies') }}">Последствие от реализации угроз</a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ url('/usp/scuriteblist') }}">Барьеры БД</a>
                     <a class="dropdown-item" href="#">Защищаемые данные БД</a>
                 </div>

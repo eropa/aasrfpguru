@@ -50,7 +50,7 @@ Route::middleware(['IsAdmin'])->group(function () {
         function($id=0){});
 
 
-    // Спиоск всех угроз
+    // Спиоск всех барьеров защиты
     Route::get('/usp/scuriteblist','SecuritybController@IndexAll');
     // Управление барьеров защиты
     Route::get('/usp/scuriteblist/manager/{id?}','SecuritybController@manForm',
@@ -62,14 +62,42 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/usp/scuriteblist/delete/{id?}','SecuritybController@deleteRecord',
         function($id=0){});
 
+    // Управление барьеров защиты
+    Route::get('/usp/scuriteblist/stoikost/{id?}','myStoikost@index',
+        function($id=0){});
+
+
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+//Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+if (env('ALLOW_USER_REGISTRATION', true))
+{
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
+}
+else
+{
+    Route::match(['get','post'], 'register', function () {
+        return redirect('/');
+    })->name('register');
+}
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 

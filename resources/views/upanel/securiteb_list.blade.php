@@ -55,7 +55,11 @@
                         @foreach($dataSecurites as $dataSecurite)
                             <tr>
                                 <td>{{ $dataSecurite->sName }}</td>
-                                <td><a class="btn btn-info"
+                                <td><a class="btn btn-warning"
+                                       href="{{ url('/#'.$dataSecurite->id)  }}"
+                                       role="button">Стойкость</a>
+                                    /
+                                    <a class="btn btn-info"
                                        href="{{ url('/usp/scuriteblist/manager/'.$dataSecurite->id)  }}"
                                        role="button">Изменить</a>
                                     /
