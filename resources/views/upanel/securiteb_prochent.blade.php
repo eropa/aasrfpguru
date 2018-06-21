@@ -37,10 +37,16 @@
                                     </td>
                                     <td>
                                         <?php
-
+                                            $prochent=0.00;
+                                            foreach($stoicostList as $elementList ){
+                                                if( ($elementList->idSecurity && $id)&&
+                                                    ($elementList->idTreats && $data->id)){
+                                                        $prochent=$elementList->StoukostP;
+                                                }
+                                            }
                                         ?>
 
-                                        <input class="form-control" type="text" value="33.2" id="example-text-input">
+                                        <input class="form-control" type="text" value="{{$prochent}}" id="example-text-input">
                                     </td>
                                 </tr>
                             @endforeach

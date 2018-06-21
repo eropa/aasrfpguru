@@ -83,8 +83,13 @@ class SecuritybController extends Controller
         $datas=$securiteModel->SelectId($id);
         // получаем все угрозы протик каких барьер может быть эфективный
         $threatsList = $securiteModel->SelectTreatsType($datas);
+        $stoicostList  = $securiteModel->SelectStoicost();
+        dump($stoicostList);
         // выводим вьюшку
-        return view('upanel.securiteb_prochent',['id'=>$id,'datas'=>$datas,'threatsList'=>$threatsList]);
+        return view('upanel.securiteb_prochent',[   'id'            =>  $id,
+                                                    'datas'         =>  $datas,
+                                                    'stoicostList'  =>  $stoicostList,
+                                                    'threatsList'   =>  $threatsList]);
     }
 
 }
