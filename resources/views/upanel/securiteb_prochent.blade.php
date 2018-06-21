@@ -33,9 +33,13 @@
                             @foreach($threatsList  as $data)
                                 <tr>
                                     <td>
-                                        {{$data->NameTreats}}
+                                        {{ $data->NameTreats }}
                                     </td>
                                     <td>
+                                        <?php
+
+                                        ?>
+
                                         <input class="form-control" type="text" value="33.2" id="example-text-input">
                                     </td>
                                 </tr>
