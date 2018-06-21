@@ -56,7 +56,7 @@
                             <tr>
                                 <td>{{ $dataSecurite->sName }}</td>
                                 <td><a class="btn btn-warning"
-                                       href="{{ url('/#'.$dataSecurite->id)  }}"
+                                       href="{{ url('/usp/scuriteblist/stoikost/'.$dataSecurite->id)  }}"
                                        role="button">Стойкость</a>
                                     /
                                     <a class="btn btn-info"

@@ -77,4 +77,6 @@ class myTreats extends Model
                         'AboutText'     =>  $datas->input('AboutTreats')
         ]);
     }
+
+
 }

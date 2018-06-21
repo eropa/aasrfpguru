@@ -36,36 +36,42 @@ Route::middleware(['IsAdmin'])->group(function () {
         function($id=0){});
     // Спиоско все источников угроз
     Route::get('/usp/treatsposledctvies','TreatsController@indexPosledctvies');
+
     // Управление последствием угроз
     Route::get('/usp/treatsposledctvies/manager/{id?}','TreatsController@manPosledctvie',
         function($id=0){});
+
     // Добовляем или изменяем данные в таблице последствии угроз
     Route::post('/usp/treatsposledctvies/manager/{id?}','TreatsController@SaveUpdatePosledctvie',
         function($id=0){})->name('managerposledctvies_add_save');
-    //Удоляем данные ( источники)
+
+    // Удоляем данные ( источники)
     Route::get('/usp/treatsposledctvies/delete/{id?}','TreatsController@deletePosledctvie',
         function($id=0){});
-    //Удоляем данные ( источники)
+
+    // Удоляем данные ( источники)
     Route::get('/usp/treatslist/delete/{id?}','TreatsController@deleteTreats',
         function($id=0){});
 
 
     // Спиоск всех барьеров защиты
     Route::get('/usp/scuriteblist','SecuritybController@IndexAll');
+
     // Управление барьеров защиты
     Route::get('/usp/scuriteblist/manager/{id?}','SecuritybController@manForm',
         function($id=0){});
+
     // Добовление или изменение угрозы из БД
     Route::post('/usp/scuriteblist/manager/{id?}','SecuritybController@SaveUpdateSecuriteb',
         function($id=0){})->name('managersecuriteb_add_save');
-    //Удоляем данные ( источники)
+
+    // Удоляем данные ( источники)
     Route::get('/usp/scuriteblist/delete/{id?}','SecuritybController@deleteRecord',
         function($id=0){});
 
     // Управление барьеров защиты
-    Route::get('/usp/scuriteblist/stoikost/{id?}','myStoikost@index',
+    Route::get('/usp/scuriteblist/stoikost/{id?}','SecuritybController@indexStoikost',
         function($id=0){});
-
 
 });
 

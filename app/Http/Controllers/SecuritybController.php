@@ -32,14 +32,13 @@ class SecuritybController extends Controller
         $myModel=new myTreatsIstochnik();
         // CСписок всех источникво
         $datasIstohniks=$myModel->SelectAllRecord();
-
-        $securiteModel=new SecurityB();
-        $datas=$securiteModel->SelectId($id);
-        $SelectIsctochnik = explode("#", $datas->typeIsctochnik);
         // открываем вьюшку на упрвление
         if($id==0){
             return view('upanel.securiteb_manager',['id'=>$id,'datasIstohniks'=>$datasIstohniks]);
         }else{
+            $securiteModel=new SecurityB();
+            $datas=$securiteModel->SelectId($id);
+            $SelectIsctochnik = explode("#", $datas->typeIsctochnik);
             return view('upanel.securiteb_manager',['id'=>$id,
                 'datasIstohniks'=>$datasIstohniks,
                 'datas'=>$datas,
@@ -74,6 +73,18 @@ class SecuritybController extends Controller
         $myModel->DeleteRecord($id);
         // переходим на список всех групп
         return redirect('usp/scuriteblist');
+    }
+
+    //Покащываем страницу стойкости
+    public function indexStoikost($id){
+        // Экземпляр класса
+        $securiteModel=new SecurityB();
+        // получаем защиту
+        $datas=$securiteModel->SelectId($id);
+        // получаем все угрозы протик каких барьер может быть эфективный
+        $threatsList = $securiteModel->SelectTreatsType($datas);
+        // выводим вьюшку
+        return view('upanel.securiteb_prochent',['id'=>$id,'datas'=>$datas,'threatsList'=>$threatsList]);
     }
 
 }

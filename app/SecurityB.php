@@ -70,4 +70,14 @@ class SecurityB extends Model
             ]);
     }
 
+    public function SelectTreatsType($data){
+        //получаем массив источников
+        $SelectIsctochnik = explode("#", $data->typeIsctochnik);
+
+        // строка запроса
+        $datasReturn = DB::select('select * from my_treats');
+        // возрошаем список
+        return $datasReturn;
+    }
+
 }
