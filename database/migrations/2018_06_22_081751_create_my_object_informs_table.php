@@ -15,6 +15,9 @@ class CreateMyObjectInformsTable extends Migration
     {
         Schema::create('my_object_informs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('sName');
+            $table->text('sAbout');
+            $table->string('sIstochnik');
             $table->timestamps();
         });
     }

@@ -39,7 +39,7 @@
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-body">
-                    <a class="btn btn-success" href="{{ url('/usp/scuriteblist/manager/0') }}"
+                    <a class="btn btn-success" href="{{ url('/usp/objinfolist/manager/0') }}"
                        role="button">Добавить запись</a>
                     <h5 class="card-title">Список защищаемых объектов</h5>
                     <table class="table table-hover">
@@ -50,10 +50,22 @@
                         </tr>
                         </thead>
                         <tbody>
-
-
-
-
+                            @foreach($datas as $data)
+                                <tr>
+                                    <td>
+                                        {{ $data->sName }}
+                                    </td>
+                                    <td>
+                                    <td><a class="btn btn-info"
+                                           href="{{ url('/usp/objinfolist/manager/'.$data->id)  }}"
+                                           role="button">Изменить</a>
+                                        /
+                                        <a class="btn btn-danger"
+                                           href="{{ url('/usp/objinfolist/delete/'.$data->id)  }}"
+                                           role="button">Удалить</a></td>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

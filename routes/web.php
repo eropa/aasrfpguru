@@ -79,10 +79,15 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/usp/objinfolist','ObjectInform@indexAll');
 
     // Управление барьеров защиты
-    Route::get('/usp/objinfolist/manager/{id?}','ObjectInform@manStoikost',
+    Route::get('/usp/objinfolist/manager/{id?}','ObjectInform@manObjectInfo',
         function($id=0){});
+    // Управление барьеров защиты
+    Route::post('/usp/objinfolist/manager/{id?}','ObjectInform@AddUpdatObject',
+        function($id=0){})->name('add_update_objectinfo');
 
-
+    // Удоляем данные ( источники)
+    Route::get('/usp/objinfolist/delete/{id?}','ObjectInform@deleteRecord',
+        function($id=0){});
 });
 
 //Auth::routes();
