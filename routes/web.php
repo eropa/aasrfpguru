@@ -69,10 +69,12 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/usp/scuriteblist/delete/{id?}','SecuritybController@deleteRecord',
         function($id=0){});
 
-    // Управление барьеров защиты
+    // Стойкость
     Route::get('/usp/scuriteblist/stoikost/{id?}','SecuritybController@indexStoikost',
         function($id=0){});
-
+    // Стойкость записываем
+    Route::post('/usp/scuriteblist/stoikost/{id?}','SecuritybController@SaveStoikost',
+        function($id=0){})->name('save_stoikost');;
 });
 
 //Auth::routes();

@@ -13,12 +13,12 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" href="#">
+                    <form method="post" href="{{ route('save_stoikost') }}">
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 form-control-label">Название</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputEmail3"
-                                       placeholder="Название барьера защиты" name="sName"
+                                       placeholder="Название барьера защиты" name="sName" readonly
                                        @if ($id > 0) value="{{ $datas->sName }}" @endif >
                             </div>
                         </div>
@@ -30,6 +30,9 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php
+                                $posThreatsId=""
+                            ?>
                             @foreach($threatsList  as $data)
                                 <tr>
                                     <td>
@@ -39,14 +42,18 @@
                                         <?php
                                             $prochent=0.00;
                                             foreach($stoicostList as $elementList ){
-                                                if( ($elementList->idSecurity && $id)&&
-                                                    ($elementList->idTreats && $data->id)){
+                                                if( ($elementList->idSecurity == $id)and
+                                                    ($elementList->idTreats ==  $data->id)){
                                                         $prochent=$elementList->StoukostP;
                                                 }
                                             }
+                                        $posThreatsId=$posThreatsId." ".$data->id
+
                                         ?>
 
-                                        <input class="form-control" type="text" value="{{$prochent}}" id="example-text-input">
+                                        <input class="form-control" type="text" value="{{$prochent}}"
+                                               name="stoikost_{{ $data->id}}"
+                                               id="example-text-input">
                                     </td>
                                 </tr>
                             @endforeach
@@ -55,6 +62,7 @@
 
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="_idRecord" value="{{ $id }}">
+                        <input type="hidden" name="_idThreats" value="{{ $posThreatsId }}">
                         <meta name="csrf-token" content="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-primary">Сохранить</button>
                     </form>

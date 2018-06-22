@@ -61,7 +61,7 @@ class SecurityB extends Model
         foreach ($datas->input('mIstochnik') as $elementIstochnik){
             $sTypeIstochnuk=$sTypeIstochnuk." # ".$elementIstochnik;
         }
-
+        // обновляем данные в базе
         DB::table('security_bs')
             ->where('id', $datas->input('_idRecord'))
             ->update([  'sName'             => $datas->input('sName'),
@@ -69,16 +69,32 @@ class SecurityB extends Model
                         'AboutSecurity'     => $datas->input('AboutText')
             ]);
     }
-
+    // Возрошаем угрозы против каких барьер защиты может работать
     public function SelectTreatsType($data){
         //получаем массив источников
         $SelectIsctochnik = explode("#", $data->typeIsctochnik);
+        //удоляем пустой элемент
+        unset ($SelectIsctochnik[0]) ;
+        $filtrLike="";
+        $iCount=0;
+        // формируем строку для фильтра
+        foreach($SelectIsctochnik as $elementist){
+            // Если добовляем первый элемент то начинаем строку фильтра
+            if ($iCount==0){
+                $filtrLike="WHERE TypeIstochnik LIKE '%#_".(int)$elementist."'";
+                $iCount=1;
+            }else{
+                //Доболвяем еще дополнитеьные источникик
+                $filtrLike=$filtrLike."or TypeIstochnik LIKE '%#_".(int)$elementist."'";
+            }
+        }
         // строка запроса
-        $datasReturn = DB::select('select * from my_treats');
+        $datasReturn = DB::select('select * from my_treats '.$filtrLike);
         // возрошаем список
         return $datasReturn;
     }
 
+    // возрошаем таблицу СТОЙКОСТИ
     public function SelectStoicost(){
         // строка запроса
         $datasReturn = DB::select('select * from my_stoikosts');
@@ -86,4 +102,20 @@ class SecurityB extends Model
         return $datasReturn;
     }
 
+    // записываем значение Стойкости по определенноу барьеру защиты
+    public function UpdateStoicost($datas){
+        // удоляем данные
+        DB::table('my_stoikosts')->where('idSecurity', '=', $datas->input('_idRecord'))->delete();
+        //получаем массив источников
+        $SelectIsctochnik = explode(" ", $datas->input('_idThreats'));
+        //записываем данные в таблицу
+        foreach($SelectIsctochnik as $data){
+            //print $datas->input('stoikost_'.(int)$data);
+            DB::table('my_stoikosts')->insert(
+                 [      'idSecurity' => $datas->input('_idRecord'),
+                        'idTreats' => (int)$data,
+                        'StoukostP'=>$datas->input('stoikost_'.(int)$data)]
+            );
+        }
+    }
 }

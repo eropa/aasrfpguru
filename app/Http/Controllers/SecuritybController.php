@@ -75,7 +75,7 @@ class SecuritybController extends Controller
         return redirect('usp/scuriteblist');
     }
 
-    //Покащываем страницу стойкости
+    // Покащываем страницу стойкости
     public function indexStoikost($id){
         // Экземпляр класса
         $securiteModel=new SecurityB();
@@ -84,12 +84,21 @@ class SecuritybController extends Controller
         // получаем все угрозы протик каких барьер может быть эфективный
         $threatsList = $securiteModel->SelectTreatsType($datas);
         $stoicostList  = $securiteModel->SelectStoicost();
-        dump($stoicostList);
         // выводим вьюшку
         return view('upanel.securiteb_prochent',[   'id'            =>  $id,
                                                     'datas'         =>  $datas,
                                                     'stoicostList'  =>  $stoicostList,
                                                     'threatsList'   =>  $threatsList]);
+    }
+
+    //Сохроняем стойкость
+    public function SaveStoikost(Request $request){
+        // Экземпляр класса
+        $securiteModel=new SecurityB();
+        // Обновляем данные
+        $securiteModel->UpdateStoicost($request);
+        // переходим на список всех групп
+        return redirect('usp/scuriteblist');
     }
 
 }
