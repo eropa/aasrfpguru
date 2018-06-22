@@ -74,7 +74,15 @@ Route::middleware(['IsAdmin'])->group(function () {
         function($id=0){});
     // Стойкость записываем
     Route::post('/usp/scuriteblist/stoikost/{id?}','SecuritybController@SaveStoikost',
-        function($id=0){})->name('save_stoikost');;
+        function($id=0){})->name('save_stoikost');
+    // Спиоск защищаемых объктов
+    Route::get('/usp/objinfolist','ObjectInform@indexAll');
+
+    // Управление барьеров защиты
+    Route::get('/usp/objinfolist/manager/{id?}','ObjectInform@manStoikost',
+        function($id=0){});
+
+
 });
 
 //Auth::routes();
