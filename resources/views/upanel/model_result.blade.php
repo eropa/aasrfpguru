@@ -14,13 +14,17 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Результат моделирования</h5>
+                    {!! $dataObject !!}
+
+                    <br>
+                    {!! $dataThreats !!}
+                    <br>
+                    <b>Результат</b>
                     <table class="table table-hover">
                         <thead>
                         <tr>
                             <th scope="col">Вариант</th>
-                            <th scope="col">Угрозы</th>
                             <th scope="col">Барьеры</th>
-                            <th scope="col">Защищаемые объекты</th>
                             <th scope="col">Стойкость</th>
                             <th scope="col">Затраты</th>
                         </tr>

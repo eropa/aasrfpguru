@@ -41,4 +41,48 @@ class myModelMath extends Model
         return $arrayResult;
     }
 
+    /**
+     * Получаем номер угрозы
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function NameThreats($id){
+        // модуль для работы с угрозами
+        $myModelTreahts=new myTreats();
+        // получаем по номеру записи
+        $data=$myModelTreahts->SelectId($id);
+        // возврошаем данные
+        return $data->NameTreats;
+    }
+
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function NameObject($id){
+        // модуль для работы с угрозами
+        $myModelObject=new myObjectInform();
+        // получаем по номеру записи
+        $data=$myModelObject->SelectId($id);
+        // возврошаем данные
+        return $data->sName;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function NameSecurite($id){
+        // модуль для работы с угрозами
+        $myModelSecurityB=new SecurityB();
+        // получаем по номеру записи
+        $data=$myModelSecurityB->SelectId($id);
+        // возврошаем данные
+        return $data->sName;
+    }
+
+
+
 }
