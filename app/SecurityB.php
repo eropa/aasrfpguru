@@ -28,6 +28,7 @@ class SecurityB extends Model
         $this::create([ 'sName'    =>  $datas->input('sName'),
             'typeIsctochnik' =>  $sTypeIstochnuk,
             'userCreate'    =>  $idUser,
+            'price'         =>  (float)$datas->input('fPrice'),
             'AboutSecurity'  =>  $datas->input('AboutText')]);
     }
 
@@ -65,6 +66,7 @@ class SecurityB extends Model
         DB::table('security_bs')
             ->where('id', $datas->input('_idRecord'))
             ->update([  'sName'             => $datas->input('sName'),
+                        'price'         => $datas->input('fPrice'),
                         'typeIsctochnik'    => $sTypeIstochnuk,
                         'AboutSecurity'     => $datas->input('AboutText')
             ]);
@@ -112,9 +114,9 @@ class SecurityB extends Model
         foreach($SelectIsctochnik as $data){
             //print $datas->input('stoikost_'.(int)$data);
             DB::table('my_stoikosts')->insert(
-                 [      'idSecurity' => $datas->input('_idRecord'),
-                        'idTreats' => (int)$data,
-                        'StoukostP'=>$datas->input('stoikost_'.(int)$data)]
+                 [      'idSecurity'    => $datas->input('_idRecord'),
+                        'idTreats'      => (int)$data,
+                        'StoukostP'     =>$datas->input('stoikost_'.(int)$data)]
             );
         }
     }

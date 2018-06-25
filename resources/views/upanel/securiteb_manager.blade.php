@@ -45,6 +45,14 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 form-control-label">Затраты</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail3"
+                                         placeholder="Затраты на реализацию барьера" name="fPrice"
+                                           @if ($id > 0) value="{{ $datas->price }}" @endif >
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 form-control-label">Источники угрозы</label>
                             <select multiple class="form-control" id="exampleSelect2" name="mIstochnik[]">
                                 @if ($id > 0)

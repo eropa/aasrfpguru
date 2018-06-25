@@ -88,6 +88,11 @@ Route::middleware(['IsAdmin'])->group(function () {
     // Удоляем данные ( источники)
     Route::get('/usp/objinfolist/delete/{id?}','ObjectInform@deleteRecord',
         function($id=0){});
+
+    // Начало выбора средств защищаемых объектов для моделирования
+    Route::get('/usp/model','MathModelController@index');
+    // Анализируем
+    Route::post('/usp/model','MathModelController@MathAnaliz');
 });
 
 //Auth::routes();

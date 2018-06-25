@@ -45,8 +45,7 @@
                     Моделирование
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Создать</a>
-                    <a class="dropdown-item" href="#">Список</a>
+                    <a class="dropdown-item" href="{{ url('/usp/model') }}">Моделирование</a>
                 </div>
             </li>
         </ul>
